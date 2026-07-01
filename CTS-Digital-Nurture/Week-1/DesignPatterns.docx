@@ -1,0 +1,156 @@
+# Design Patterns
+
+---
+
+## Exercise 1: Implementing the Singleton Pattern
+
+### Scenario
+You need to ensure that a logging utility class in your application has only one instance throughout the application lifecycle to ensure consistent logging.
+
+### Steps
+1. **Create a New Java Project** named `SingletonPatternExample`.
+2. **Define a Singleton Class** named `Logger` with:
+   - A private static instance of itself.
+   - A private constructor.
+   - A public static method to get the instance.
+3. **Implement the Singleton Pattern** ensuring only one instance is created.
+4. **Test the Singleton Implementation** to verify a single instance is used across the application.
+
+### Solution
+
+**Logger.java**
+```java
+public class Logger {
+	private static Logger obj;
+
+	private Logger() {
+
+	}
+
+	public static Logger getInstance() {
+		if (obj == null) {
+			obj = new Logger();
+		}
+		return obj;
+	}
+}
+```
+
+**Testclass.java**
+```java
+class Testclass {
+	public static void main(String args[]) {
+		Logger obj1 = Logger.getInstance();
+		Logger obj2 = Logger.getInstance();
+		System.out.println(obj1 == obj2);
+	}
+}
+```
+
+**Expected Output**
+```
+true
+```
+
+---
+
+## Exercise 2: Implementing the Factory Method Pattern
+
+### Scenario
+You are developing a document management system that needs to create different types of documents (Word, PDF, Excel). Use the Factory Method Pattern to achieve this.
+
+### Steps
+1. **Create a New Java Project** named `FactoryMethodPatternExample`.
+2. **Define Document Interfaces/Abstract Classes** for `WordDocument`, `PdfDocument`, and `ExcelDocument`.
+3. **Create Concrete Document Classes** that implement the above interfaces.
+4. **Implement the Factory Method** using an abstract `DocumentFactory` class with a `createDocument()` method, and concrete factory classes for each type.
+5. **Test the Factory Method** to demonstrate creation of different document types.
+
+### Solution
+
+**Document.java** *(Interface)*
+```java
+package factory;
+
+public interface Document {
+	void open();
+	void save();
+}
+```
+
+**DocumentFactory.java** *(Abstract Factory)*
+```java
+package factory;
+
+public abstract class DocumentFactory {
+	public abstract Document createDocument();
+}
+```
+
+**PdfDoc.java** *(Concrete Document + Factory)*
+```java
+package factory;
+
+public class PdfDoc implements Document {
+	public void save() {
+		System.out.println("saved pdf doc");
+	}
+	public void open() {
+		System.out.println("opened pdf doc");
+	}
+}
+
+class Pdf extends DocumentFactory {
+	public Document createDocument() {
+		return new PdfDoc();
+	}
+}
+```
+
+**ExcelDoc.java** *(Concrete Document + Factory)*
+```java
+package factory;
+
+public class ExcelDoc implements Document {
+	public void save() {
+		System.out.println("saved excel doc");
+	}
+	public void open() {
+		System.out.println("opened excel doc");
+	}
+}
+
+class Excel extends DocumentFactory {
+	public Document createDocument() {
+		return new ExcelDoc();
+	}
+}
+```
+
+**TestClass.java**
+```java
+package factory;
+
+public class TestClass {
+	public static void main(String[] args) {
+		DocumentFactory pdfFactory = new Pdf();
+		Document pdfDoc = pdfFactory.createDocument();
+		pdfDoc.open();
+		pdfDoc.save();
+
+		DocumentFactory excelFactory = new Excel();
+		Document excelDoc = excelFactory.createDocument();
+		excelDoc.save();
+		excelDoc.open();
+	}
+}
+```
+
+**Expected Output**
+```
+opened pdf doc
+saved pdf doc
+saved excel doc
+opened excel doc
+```
+
