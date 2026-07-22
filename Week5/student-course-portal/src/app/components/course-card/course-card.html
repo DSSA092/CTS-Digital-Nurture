@@ -1,0 +1,28 @@
+<div
+  class="course-card"
+  [ngClass]="cardClasses"
+  [ngStyle]="{ 'border-left': course.gradeStatus === 'passed' ? '4px solid green' : course.gradeStatus === 'failed' ? '4px solid red' : '4px solid grey' }"
+  [appHighlight]="'lightyellow'"
+>
+  <div class="card-header">
+    <h3>{{ course.name }}</h3>
+
+    <span [ngSwitch]="course.gradeStatus">
+      <span *ngSwitchCase="'passed'" class="badge badge--passed">Passed</span>
+      <span *ngSwitchCase="'failed'" class="badge badge--failed">Failed</span>
+      <span *ngSwitchDefault class="badge badge--pending">Pending</span>
+    </span>
+  </div>
+
+  <p><strong>Code:</strong> {{ course.code }}</p>
+  <p><strong>Credits:</strong> {{ course.credits | creditLabel }}</p>
+
+  <button (click)="$event.stopPropagation(); toggleExpand()">{{ isExpanded ? 'Hide Details' : 'Show Details' }}</button>
+
+  <div *ngIf="isExpanded" class="expanded" [class.expanded]="isExpanded">
+    <p><strong>Course ID:</strong> {{ course.id }}</p>
+    <p><strong>Grade Status:</strong> {{ course.gradeStatus }}</p>
+  </div>
+
+  <button class="enrol-btn" (click)="onEnroll($event)">{{ (isEnrolled$ | async) ? 'Enrolled' : 'Enrol' }}</button>
+</div>

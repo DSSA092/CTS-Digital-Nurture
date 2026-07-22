@@ -1,0 +1,19 @@
+{
+  "courses": [
+    { "id": 1, "name": "Introduction to Programming", "code": "CS101", "credits": 3, "gradeStatus": "passed" },
+    { "id": 2, "name": "Data Structures & Algorithms", "code": "CS201", "credits": 4, "gradeStatus": "failed" },
+    { "id": 3, "name": "Database Management Systems", "code": "CS301", "credits": 3, "gradeStatus": "pending" },
+    { "id": 4, "name": "Web Technologies", "code": "CS401", "credits": 2, "gradeStatus": "passed" },
+    { "id": 5, "name": "Software Engineering", "code": "CS501", "credits": 4, "gradeStatus": "pending" }
+  ],
+  "students": [
+    { "id": 1, "name": "Alice Johnson", "email": "alice@example.com", "gpa": 3.8 },
+    { "id": 2, "name": "Bob Smith", "email": "bob@example.com", "gpa": 3.5 },
+    { "id": 3, "name": "Carol White", "email": "carol@example.com", "gpa": 3.9 }
+  ],
+  "enrollments": [
+    { "id": 1, "studentId": 1, "courseId": 1 },
+    { "id": 2, "studentId": 1, "courseId": 3 },
+    { "id": 3, "studentId": 2, "courseId": 2 }
+  ]
+}

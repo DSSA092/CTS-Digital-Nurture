@@ -1,0 +1,35 @@
+<h1>Welcome to {{ portalName }}</h1>
+<p>Manage your courses, track your academic progress, and enrol in new subjects all in one place.</p>
+
+<app-notification></app-notification>
+<app-course-summary-widget></app-course-summary-widget>
+
+<div class="stats-row">
+  <div class="stat-card">
+    <span class="stat-label">Courses Available</span>
+    <span class="stat-value">{{ courseCount }}</span>
+  </div>
+  <div class="stat-card">
+    <span class="stat-label">Enrolled</span>
+    <span class="stat-value">3</span>
+  </div>
+  <div class="stat-card">
+    <span class="stat-label">GPA</span>
+    <span class="stat-value">3.8</span>
+  </div>
+</div>
+
+<!--
+  [disabled]="isPortalActive" is property binding — Angular evaluates the expression and sets the DOM property.
+  [(ngModel)]="searchTerm" is two-way binding (banana-in-a-box): [ngModel] pushes data in, (ngModelChange) pulls it back out.
+-->
+<div class="actions">
+  <button [disabled]="!isPortalActive" (click)="onEnrollClick()">Enrol Now</button>
+  <p *ngIf="message" class="message">{{ message }}</p>
+</div>
+
+<div class="search-box">
+  <label for="searchInput">Search courses:</label>
+  <input id="searchInput" type="text" [(ngModel)]="searchTerm" placeholder="Type to search..." />
+  <p>You searched for: <strong>{{ searchTerm }}</strong></p>
+</div>
