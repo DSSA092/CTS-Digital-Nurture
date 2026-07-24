@@ -1,5 +1,20 @@
 # Week 6 - Hands-on for Git 2: Git Ignore Output
 
+What GitIgnore is:
+So gitignore basically tells the Git which all files and folders should be ignored and also not to be tracked in the repo. This is done to keep the sensitive files, temporary or the unwanted files out of the version control like .env, .log etc
+
+2-GitIgnore Implementation:
+To Ignore Unwanted Files, 
+
+first create a .gitignore 
+
+then add the names of the files or folders to ignore like .env or *.log etc
+
+Save and Commit the file by doing the following:
+
+git add .gitignore
+
+git commit -m "Add .gitignore"
 ```
 alwin@DSSA MINGW64 ~/OneDrive/Desktop/CTS-Digital-Nurture (main)
 $ cd "/c/Users/alwin/OneDrive/Desktop/CTS-Digital-Nurture/Week6"
