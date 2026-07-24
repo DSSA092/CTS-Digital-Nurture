@@ -1,1 +1,2 @@
 Welcome to the version control
+This line was added on GitNewBranch
